@@ -16,20 +16,23 @@ namespace SnakeAndLadder
             Console.WriteLine();
             Console.WriteLine("Player mode:single: Starting position at 0");
             Console.WriteLine("*Start Game*");
+            Console.WriteLine();
 
             
             int position = 0;
+            int count = 0;
 
             Random die = new Random();     
             Random options = new Random();
 
             while (position < FINAL)
             {
-                int dice = die.Next(1, 7);       
+                int dice = die.Next(1, 7);   
                 Console.WriteLine("The number on this die roll is: " + dice);
                 int opt = options.Next(0, 3);   
+                count++;                         
 
-                
+              
                 if (opt == NO_PLAY)
                 {
                     Console.WriteLine("No play: Player in same position-- " + position);
@@ -44,7 +47,7 @@ namespace SnakeAndLadder
                     }
                     else
                     {
-                        Console.WriteLine("Ladder! new postion-- " + position);
+                         Console.WriteLine("Ladder! new postion-- " + position);
                     }
 
                 }
@@ -58,8 +61,11 @@ namespace SnakeAndLadder
                 {
                     position = 0;
                 }
-            }
 
+                Console.WriteLine("The position after the {0} die roll is {1} ", count, position);
+            }
+            Console.WriteLine();
+            Console.WriteLine("The number of times the die is thrown is: " + count);
         }
 
 
