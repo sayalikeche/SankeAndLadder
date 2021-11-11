@@ -4,7 +4,7 @@ namespace SnakeAndLadder
 {
     class Program
     {
-       
+        
         public const int NO_PLAY = 0;
         public const int LADDER = 1;
         public const int SNAKE = 2;
@@ -20,14 +20,14 @@ namespace SnakeAndLadder
             
             int position = 0;
 
-            Random die = new Random();   
+            Random die = new Random();     
             Random options = new Random();
 
-            while (position <= FINAL)
+            while (position < FINAL)
             {
                 int dice = die.Next(1, 7);       
                 Console.WriteLine("The number on this die roll is: " + dice);
-                int opt = options.Next(0, 3);    
+                int opt = options.Next(0, 3);   
 
                 
                 if (opt == NO_PLAY)
@@ -37,7 +37,16 @@ namespace SnakeAndLadder
                 else if (opt == LADDER)
                 {
                     position = position + dice;
-                    Console.WriteLine("Ladder! new postion-- " + position);
+                    if (position > 100)
+                    {
+                        Console.WriteLine("Try Again, throw exceeded 100!");
+                        position = position - dice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ladder! new postion-- " + position);
+                    }
+
                 }
                 else
                 {
@@ -49,8 +58,12 @@ namespace SnakeAndLadder
                 {
                     position = 0;
                 }
-
             }
+
         }
+
+
+
+
     }
 }
